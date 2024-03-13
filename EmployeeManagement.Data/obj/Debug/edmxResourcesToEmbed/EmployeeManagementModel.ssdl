@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="PersonalID" Type="int" />
+    <Property Name="PayPerHour" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Managers">
+    <Key>
+      <PropertyRef Name="ManagerID" />
+    </Key>
+    <Property Name="ManagerID" Type="int" Nullable="false" />
+    <Property Name="PersonalID" Type="int" />
+    <Property Name="AnnualSalary" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MaxExpenseAmount" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="PersonalDetails">
+    <Key>
+      <PropertyRef Name="PersonalID" />
+    </Key>
+    <Property Name="PersonalID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="30" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Address1" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Supervisors">
+    <Key>
+      <PropertyRef Name="SupervisorID" />
+    </Key>
+    <Property Name="SupervisorID" Type="int" Nullable="false" />
+    <Property Name="PersonalID" Type="int" />
+    <Property Name="AnnualSalary" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <Association Name="FK__Employees__Perso__398D8EEE">
+    <End Role="PersonalDetails" Type="Self.PersonalDetails" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="PersonalID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="PersonalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Managers__Person__3F466844">
+    <End Role="PersonalDetails" Type="Self.PersonalDetails" Multiplicity="0..1" />
+    <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="PersonalID" />
+      </Principal>
+      <Dependent Role="Managers">
+        <PropertyRef Name="PersonalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Superviso__Perso__3C69FB99">
+    <End Role="PersonalDetails" Type="Self.PersonalDetails" Multiplicity="0..1" />
+    <End Role="Supervisors" Type="Self.Supervisors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="PersonalID" />
+      </Principal>
+      <Dependent Role="Supervisors">
+        <PropertyRef Name="PersonalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeeManagementModelStoreContainer">
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supervisors" EntityType="Self.Supervisors" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Employees__Perso__398D8EEE" Association="Self.FK__Employees__Perso__398D8EEE">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Managers__Person__3F466844" Association="Self.FK__Managers__Person__3F466844">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Managers" EntitySet="Managers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Superviso__Perso__3C69FB99" Association="Self.FK__Superviso__Perso__3C69FB99">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Supervisors" EntitySet="Supervisors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

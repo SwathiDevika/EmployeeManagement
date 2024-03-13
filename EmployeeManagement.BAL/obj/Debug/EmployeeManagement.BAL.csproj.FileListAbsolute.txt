@@ -1,0 +1,15 @@
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EmployeeManagement.BAL.dll
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EmployeeManagement.BAL.pdb
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EmployeeManagement.Data.dll
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EntityFramework.dll
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EmployeeManagement.Data.pdb
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EmployeeManagement.Data.dll.config
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EntityFramework.xml
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\obj\Debug\EmployeeManagement.BAL.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\obj\Debug\EmployeeManagement.BAL.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\obj\Debug\EmployeeManagement.BAL.csproj.CopyComplete
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\obj\Debug\EmployeeManagement.BAL.dll
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\obj\Debug\EmployeeManagement.BAL.pdb
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EmployeeManagement.BAL.dll.config
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\DELL\source\repos\EmployeeManagement\EmployeeManagement.BAL\bin\Debug\EntityFramework.SqlServer.xml

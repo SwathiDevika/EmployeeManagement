@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="PersonalID" Type="Int32" />
+    <Property Name="PayPerHour" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="PersonalDetail" Relationship="Self.FK__Employees__Perso__398D8EEE" FromRole="Employees" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="ManagerID" />
+    </Key>
+    <Property Name="ManagerID" Type="Int32" Nullable="false" />
+    <Property Name="PersonalID" Type="Int32" />
+    <Property Name="AnnualSalary" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="MaxExpenseAmount" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="PersonalDetail" Relationship="Self.FK__Managers__Person__3F466844" FromRole="Managers" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="PersonalDetail">
+    <Key>
+      <PropertyRef Name="PersonalID" />
+    </Key>
+    <Property Name="PersonalID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Perso__398D8EEE" FromRole="PersonalDetails" ToRole="Employees" />
+    <NavigationProperty Name="Managers" Relationship="Self.FK__Managers__Person__3F466844" FromRole="PersonalDetails" ToRole="Managers" />
+    <NavigationProperty Name="Supervisors" Relationship="Self.FK__Superviso__Perso__3C69FB99" FromRole="PersonalDetails" ToRole="Supervisors" />
+  </EntityType>
+  <EntityType Name="Supervisor">
+    <Key>
+      <PropertyRef Name="SupervisorID" />
+    </Key>
+    <Property Name="SupervisorID" Type="Int32" Nullable="false" />
+    <Property Name="PersonalID" Type="Int32" />
+    <Property Name="AnnualSalary" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="PersonalDetail" Relationship="Self.FK__Superviso__Perso__3C69FB99" FromRole="Supervisors" ToRole="PersonalDetails" />
+  </EntityType>
+  <Association Name="FK__Employees__Perso__398D8EEE">
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="PersonalID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="PersonalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Managers__Person__3F466844">
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="0..1" />
+    <End Role="Managers" Type="Self.Manager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="PersonalID" />
+      </Principal>
+      <Dependent Role="Managers">
+        <PropertyRef Name="PersonalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Superviso__Perso__3C69FB99">
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="0..1" />
+    <End Role="Supervisors" Type="Self.Supervisor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="PersonalID" />
+      </Principal>
+      <Dependent Role="Supervisors">
+        <PropertyRef Name="PersonalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeeManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Managers" EntityType="Self.Manager" />
+    <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetail" />
+    <EntitySet Name="Supervisors" EntityType="Self.Supervisor" />
+    <AssociationSet Name="FK__Employees__Perso__398D8EEE" Association="Self.FK__Employees__Perso__398D8EEE">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Managers__Person__3F466844" Association="Self.FK__Managers__Person__3F466844">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Managers" EntitySet="Managers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Superviso__Perso__3C69FB99" Association="Self.FK__Superviso__Perso__3C69FB99">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Supervisors" EntitySet="Supervisors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
